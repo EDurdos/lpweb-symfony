@@ -11,7 +11,7 @@ services:
     ports:
       - 7777:80
     volumes:
-      - ./exercice:/var/www/html
+      - .:/var/www/html
     networks:
       - bridge
 
