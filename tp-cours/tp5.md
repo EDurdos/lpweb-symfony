@@ -33,11 +33,11 @@ Si vous ne savez toujours pas pourquoi vous devriez intégrer les tests unitaire
 
 Les trois A du test unitaire constituent **un concept fondamental pour ce type de test**, décrivant un processus en trois étapes.
 
--  **Organiser**  
+-  **Organiser (Arrange)**  
 C’est la première étape des tests unitaires. Cette étape définit les exigences auxquelles le code doit satisfaire.
--  **Agir**   
+-  **Agir (Act)**   
 C’est l’étape intermédiaire des tests : le moment où le test est effectué, donnant les résultats que vous aurez à analyser par la suite.
--  **Affirmer**   
+-  **Affirmer (Assert)**   
 Dans cette dernière étape, les résultats devront être vérifiés pour voir s’ils sont conformes aux attentes. Si c’est le cas, il est validé et vous pouvez continuer. Dans le cas contraire, les erreurs éventuelles devront être corrigées jusqu’à ce qu’elles cessent d’apparaître.
 
 *[Source OpenClassroom](https://openclassrooms.com/fr/courses/4087056-testez-et-suivez-letat-de-votre-application-php/4419446-premiers-pas-avec-phpunit-et-les-tests-unitaires)*   
