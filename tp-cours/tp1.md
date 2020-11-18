@@ -148,9 +148,9 @@ Nous pouvons maintenant créer notre Fixture `ArticleFixtures` à l'aide de la c
 ```php
 public function load(ObjectManager $manager)
 {
-    $faker = Factory::create();
+    $faker = Faker\Factory::create();
 
-    for ($i = 1; $i <= 10; $i++)
+    for ($i = 1; $i <= 100; $i++)
     {
         $article = new Article();
 
