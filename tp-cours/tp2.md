@@ -245,7 +245,7 @@ if ($articleForm->isSubmitted())
 
 Nous pouvons voir que le champ **createdAt** reste `null`, nous allons donc devoir le renseigner nous même lorsque le formulaire est soumis.
 ```php
-if ($articleForm->isSubmutted())
+if ($articleForm->isSubmitted())
 {
     $article->setCreatedAt(new \DateTime);
     ...
