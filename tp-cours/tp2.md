@@ -155,14 +155,14 @@ Symfony utilise un Form builder, ce qui nous permet de générer les formulaires
 
 La convention pour les formulaires dans Symfony, est qu'il finisse par "Type".
 
-Dans votre méthode **new**, vous pouvez maintenant utiliser la fonction `createForm` qui prend en premier argument `ArticleType` et en deuxième argument un nouvel article :
+Dans votre méthode **create**, vous pouvez maintenant utiliser la fonction `createForm` qui prend en premier argument `ArticleType` et en deuxième argument un nouvel article :
 
 ```php
 $article = new Article();
 
 $articleForm = $this->createForm(ArticleType::class, $article);
 
-return $this->render('article/new.html.twig', [
+return $this->render('article/create.html.twig', [
     'articleForm' => $articleForm->createView() 
 ]);
 ```
