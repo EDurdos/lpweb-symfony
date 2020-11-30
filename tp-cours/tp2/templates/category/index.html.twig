@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des catégories{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1>Liste des catégories</h1>
+
+    <div class="my-5"> 
+        {% if categories | length == 0 %}
+            <p><em>Pas de catégorie</em></p>
+        {% else %}
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">Nom</th>
+                            <th scope="col">Description</th>
+                            <th scope="col">Nombre d'articles</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                    {% for category in categories %}
+                        <tr>
+                            <td>
+                                <a href="{{ path('category.show', {id : category.id}) }}">
+                                    {{ category.name }}
+                                </a>
+                            </td>
+                            <td>
+                                {{ category.description | slice(0, 200) }}...
+                                <a href="{{ path('category.show', {id : category.id}) }}">
+                                    voir plus
+                                </a>
+                            </td>
+                            <td>{{ category.articles | length }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

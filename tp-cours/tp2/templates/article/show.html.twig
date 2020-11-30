@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ article.title }}{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1>{{ article.title }}</h1>
+
+    <p><em>Créé le {{ article.createdAt | date('d/m/Y') }}</em></p>
+
+    <a class="btn btn-primary" href="{{ path('article') }}" role="button">Retour</a>
+
+    <div class="my-4">
+        <blockquote class="blockquote text-left">
+            <p class="mb-0">{{ article.content }}</p>
+            <footer class="blockquote-footer">{{ article.author }}</footer>
+        </blockquote>
+
+        <a class="btn btn-primary" href="{{ path('article') }}" role="button">Retour</a>
+    </div>
+</div>
+{% endblock %}
