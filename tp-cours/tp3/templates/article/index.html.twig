@@ -1,0 +1,68 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des articles{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1>Liste des articles</h1>
+
+    <div class="my-3">
+        <a class="btn btn-primary" href="{{ path('article.new') }}" role="button">
+            Créer un article
+        </a>
+    </div> 
+    
+    <div class="my-3"> 
+        {% if articles | length == 0 %}
+            <p><em>Pas d'article</em></p>
+        {% else %}
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">{{ knp_pagination_sortable(articles, 'Titre', 'a.title') }}</th>
+                            <th scope="col">{{ knp_pagination_sortable(articles, 'Auteur', 'a.author') }}</th>
+                            <th scope="col">Contenu</th>
+                            <th scope="col">Créé le</th>
+                            <th scope="col">Actions</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                    {% for article in articles %}
+                        <tr>
+                            <td>
+                                <a href="{{ path('article.show', {id : article.id}) }}">
+                                    {{ article.title }}
+                                </a>
+                            </td>
+                            <td>{{ article.author }}</td>
+                            <td>
+                                {% if article.content | length > 300 %}
+                                    {{ article.content | slice(0, 300) }}...
+                                    <a href="{{ path('article.show', {id : article.id}) }}">
+                                        voir plus
+                                    </a>
+                                {% else %}
+                                    {{ article.content }}
+                                {% endif %}
+                            </td>
+                            <td>{{ article.createdAt | date('d/m/Y') }}</td>
+                            <td>
+                                <a href="{{ path('article.edit', {id : article.id}) }}">
+                                    Éditer l'article
+                                </a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+            <div>
+                {{ knp_pagination_render(articles) }}
+            </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
