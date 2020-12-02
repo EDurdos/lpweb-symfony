@@ -1,5 +1,5 @@
 # Projet noté
-> *À rendre avant vendredi 11 décembre - 18h*
+> *À rendre avant vendredi 18 décembre - 18h*
 
 ## Sommaire
 1.  [Installation](#1---Installation)
@@ -175,7 +175,7 @@ Sur cette page, vous affichez l'id d'une commande, l'email de l'acheteur ainsi q
 
 ## Correction
 
-Votre projet est à rendre avant le **vendredi 11 décembre à 18h**.
+Votre projet est à rendre avant le **vendredi 18 décembre à 18h**.
 
 Vous réalisez ce TP sur votre serveur distant et me fournir le chemin vers notre projet (Ex : `/docker/symfony/tp-note`).
 
