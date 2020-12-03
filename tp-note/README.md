@@ -169,7 +169,11 @@ Sur cette page, vous affichez l'id d'une commande, l'email de l'acheteur ainsi q
 ## Bonus
 -  Gestion des quantités des produits dans le panier
 -  Gestion des droits pour pouvoir prendre une commande et voir les commandes passées
--  Ajout images pour les produits
+-  Ajout d'une image pour les produits et l'afficher dans :
+    -  la liste des produits
+    -  la fiche d'un produit
+    -  le panier
+    -  le détail d'une commande
 
 ---
 
@@ -179,7 +183,7 @@ Votre projet est à rendre avant le **vendredi 18 décembre à 18h**.
 
 Vous réalisez ce TP sur votre serveur distant et me fournir le chemin vers notre projet (Ex : `/docker/symfony/tp-note`).
 
-⚠️ Le dossier *`vendor`* ne doit pas être transmis avec votre projet.
+⚠️ Les dossiers *`vendor`* et *`var`* ne doivent pas être transmis avec votre projet.
 
 ⚠️ `composer` doit être installé dans votre container PHP.
 
