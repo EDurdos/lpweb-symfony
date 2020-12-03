@@ -186,7 +186,7 @@ Vous réalisez ce TP sur votre serveur distant et me fournir le chemin vers notr
 J'effectuerai les commandes suivantes pour installer votre projet :
 
 ```bash
-$ scp -r root@<votre prénom>.lpweb-lannion.fr:/<chemin vers le projet>
+$ scp -r root@<votre prénom>.lpweb-lannion.fr:/<chemin vers le projet> .
 $ cd <votre projet>
 # Ajout de mes variables d'environnement dans le fichier .env
 $ docker-compose build --no-cache
