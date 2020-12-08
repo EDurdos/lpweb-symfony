@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Authentification{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1>Authentification</h1>
+
+    <div class="my-5">
+        <form action="{{ path('auth.login') }}" method="POST">
+            <label for="_username" class="sr-only">Email</label>
+            <input type="email" id="_username" name="_username" class="form-control my-2" placeholder="Email" required autofocus>
+            
+            <label for="_password" class="sr-only">Mot de passe</label>
+            <input type="password" id="_password" name="_password" class="form-control my-2" placeholder="Mot de passe" required>
+
+            {% if error %}
+                <div class="alert alert-danger">
+                    {{ error.messageKey | trans(error.messagedata, 'security') }}
+                </div>
+            {% endif %}
+            
+            <button class="btn btn-lg btn-primary btn-block mt-2" type="submit">Se connecter</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

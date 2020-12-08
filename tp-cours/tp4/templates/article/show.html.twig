@@ -1,0 +1,76 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ article.title }}{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1 data-id="{{ article.id }}">{{ article.title }}</h1>
+
+    <p>
+        <em>Créé le {{ article.createdAt | date('d/m/Y') }}</em>
+    </p>
+
+    <p>
+        <a class="btn btn-primary" href="{{ path('article') }}" role="button">Retour</a>
+    </p>
+
+    {% if app.user %}
+        <form method="POST" action="{{ path('article.delete', {id : article.id}) }}" onsubmit="return confirm('Etes-vous sûr de supprimer cet article ?')">
+            <input type="hidden" name="_method" value="DELETE">
+            <input type="hidden" name="token" value="{{ csrf_token('delete-item') }}">
+            <button type="submit" class="btn btn-danger">Supprimer l'article</button>
+        </form>
+    {% endif %}
+
+    <div class="mt-3">
+        <button id="decrement" class="btn btn-outline-dark btn-lg">👎</button>
+        <strong class="p-5">
+            <span id="likes">{{ article.likes }}</span>
+            {{ article.likes <= 1  ? 'like' : 'likes' }}
+        </strong>
+        <button id="increment" class="btn btn-outline-dark btn-lg">👍</button>
+    </div>
+
+    <div class="my-4">
+        <blockquote class="blockquote text-left">
+            <p class="mb-0">{{ article.content }}</p>
+            <footer class="blockquote-footer">{{ article.author }}</footer>
+        </blockquote>
+
+        <a class="btn btn-primary" href="{{ path('article') }}" role="button">Retour</a>
+    </div>
+</div>
+{% endblock %}
+
+{% block javascripts %}
+<script type="text/javascript">
+    const id = document.querySelector("h1").getAttribute("data-id");
+    const likes = document.querySelector("#likes");
+    const increment = document.querySelector("#increment");
+    const decrement = document.querySelector("#decrement");
+    const urlIncrement = `/article/${id}/like`;
+    const urlDecrement = `/article/${id}/unlike`;
+
+    increment.addEventListener("click", () => {
+        increment.disabled = true;
+
+        fetch(urlIncrement)
+            .then(res => res.json())
+            .then(res => {
+                likes.textContent = res.likes;
+                increment.disabled = false;
+            });
+    });
+
+    decrement.addEventListener("click", () => {
+        decrement.disabled = true;
+
+        fetch(urlDecrement)
+            .then(res => res.json())
+            .then(res => {
+                likes.textContent = res.likes;
+                decrement.disabled = false;
+            });
+    });
+</script>
+{% endblock %}

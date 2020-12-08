@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ category.name }}{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1>{{ category.name }}</h1>
+
+    <p><em>{{ category.articles | length }} article(s)</em></p>
+
+    <a class="btn btn-primary" href="{{ path('category') }}" role="button">Retour</a>
+
+    <div class="my-2">{{ category.description }}</div>
+
+    <h2 class="mt-3">Liste des artcles</h2>
+    {% if category.articles | length == 0 %}
+        <p><em>Pas d'article</em></p>
+    {% else %}
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Titre</th>
+                        <th scope="col">Auteur</th>
+                        <th scope="col">Contenu</th>
+                        <th scope="col">Créé le</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                {% for article in category.articles %}
+                    <tr>
+                        <td>
+                            <a href="{{ path('article.show', {id : article.id}) }}">
+                                {{ article.title }}
+                            </a>
+                        </td>
+                        <td>{{ article.author }}</td>
+                        <td>
+                            {% if article.content | length > 300 %}
+                                {{ article.content | slice(0, 300) }}...
+                                <a href="{{ path('article.show', {id : article.id}) }}">
+                                    voir plus
+                                </a>
+                            {% else %}
+                                {{ article.content }}
+                            {% endif %}
+                        </td>
+                        <td>{{ article.createdAt | date('d/m/Y') }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% endif %}
+
+    <a class="btn btn-primary" href="{{ path('category') }}" role="button">Retour</a>
+</div>
+{% endblock %}
